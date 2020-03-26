@@ -1,6 +1,6 @@
 <div class="col-10 offset-1 col-xl-8 offset-xl-2 input-group my-4">
-  <input type="text" class="form-control" placeholder="Task" />
+  <input required ngModel #name type="text" class="form-control" placeholder="Task" (keydown)="onKeydown($event,name);" />
   <div class="input-group-append">
-    <button class="btn btn-dark" type="button">Add</button>
+    <button class="btn btn-dark" (click)="Add(name.value); name.value = ''" type="button">Add</button>
   </div>
 </div>

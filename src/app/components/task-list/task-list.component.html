@@ -1,30 +1,20 @@
-<table class="table">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Done</th>
+        <th scope="col">Task</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of taskService.myTasks; index as id">
+          <th scope="row"><input type="checkbox" (change)="markAsCompleted($event,id)"></th>
+          <td><p [ngClass]="item.completed ? 'tachado':''">{{item.name}}</p></td>
+          <td>Edit</td>
+          <td><button class="btn btn-danger" (click)="delete(id)">Delete</button></td>
+        </tr>
+      </tbody>
+  </table>
+</div>
