@@ -4,17 +4,23 @@
       <tr>
         <th scope="col">Done</th>
         <th scope="col">Task</th>
-        <th scope="col">Edit</th>
+        <!-- <th scope="col">Edit</th> -->
         <th scope="col">Delete</th>
       </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let item of taskService.myTasks; index as id">
-          <th scope="row"><input type="checkbox" (change)="markAsCompleted($event,id)"></th>
-          <td><p [ngClass]="item.completed ? 'tachado':''">{{item.name}}</p></td>
-          <td>Edit</td>
-          <td><button class="btn btn-danger" (click)="delete(id)">Delete</button></td>
-        </tr>
-      </tbody>
+      <tr *ngFor="let item of taskService.myTasks; index as id">
+        <th scope="row">
+          <input type="checkbox" (change)="markAsCompleted($event, id)" [checked] = "item.completed" />
+        </th>
+        <td>
+          <p [ngClass]="item.completed ? 'tachado' : ''">{{ item.name }}</p>
+        </td>
+        <!-- <td>Edit</td> -->
+        <td>
+          <button class="btn btn-danger" (click)="delete(id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
   </table>
 </div>
